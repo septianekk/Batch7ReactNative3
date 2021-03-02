@@ -32,7 +32,7 @@ const Register = ({navigation}) => {
             email,
           })
           .then(() => {
-            Alert.alert('Resgiter Berhasil');
+            Alert.alert('Register Berhasil');
             navigation.navigate('Dashboard');
           });
       });

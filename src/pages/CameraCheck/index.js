@@ -17,8 +17,13 @@ const CameraCheck = ({navigation}) => {
   const [uri, setUri] = useState(
     'https://image.flaticon.com/icons/png/512/147/147144.png',
   );
+
   const [fileUri, setFileUri] = useState('');
   const [currentDate, setCurrentDate] = useState('');
+  // const [masuk, setMasuk] = useState();
+  // const [tgl, setTgl] = useState();
+  // const [bulan, setBulan] = useState();
+  // const [tahun, seTahun] = useState();
 
   useEffect(() => {
     let date = new Date().getDate(); //Current Date

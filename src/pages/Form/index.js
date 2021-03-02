@@ -10,8 +10,9 @@ import {
   PermissionsAndroid,
   Button,
   Alert,
+  Platform,
 } from 'react-native';
-
+import DatePicker from 'react-native-datepicker';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import {Picker} from '@react-native-picker/picker';
@@ -20,7 +21,8 @@ import * as ImagePicker from 'react-native-image-picker';
 
 const Form = ({navigation}) => {
   const [kategori, setKategori] = useState('');
-
+  const [startDate, setStartDate] = useState('2021-01-01');
+  const [endDate, setEndDate] = useState('2021-01-01');
   const [perihal, setPerihal] = useState('');
   const [keterangan, setKeterangan] = useState('');
   const [uri, setUri] = useState(
@@ -53,7 +55,8 @@ const Form = ({navigation}) => {
         category: kategori,
         perihal: perihal,
         keterangan: keterangan,
-
+        mulai: startDate,
+        sampai: endDate,
         uri: downloadData,
         namaGambar: namaGambar,
       })
@@ -136,7 +139,65 @@ const Form = ({navigation}) => {
             <Picker.Item label="Izin Anak Sakit" value="Izin Anak Sakit" />
           </Picker>
         </View>
-
+        <Text>Dari Tanggal: </Text>
+        <DatePicker
+          style={{
+            width: 330,
+            backgroundColor: 'white',
+            marginTop: 10,
+          }}
+          date={startDate}
+          mode="date"
+          placeholder="select date"
+          format="YYYY-MM-DD"
+          minDate="2021-01-01"
+          maxDate="2023-02-01"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              marginLeft: 36,
+            },
+            // ... You can check the source to find the other keys.
+          }}
+          onDateChange={(date) => setStartDate(date)}
+        />
+        <Text>Sampai Tanggal: </Text>
+        <DatePicker
+          style={{
+            width: 330,
+            marginTop: 10,
+            marginBottom: 10,
+            backgroundColor: 'white',
+          }}
+          date={endDate}
+          mode="date"
+          placeholder="select date"
+          format="YYYY-MM-DD"
+          minDate="2021-01-01"
+          maxDate="2023-02-01"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              marginLeft: 36,
+            },
+            // ... You can check the source to find the other keys.
+          }}
+          onDateChange={(date) => setEndDate(date)}
+        />
         <Text>Perihal: </Text>
         <Input
           placeholder="Perihal"

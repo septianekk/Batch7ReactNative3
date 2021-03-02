@@ -7,7 +7,9 @@ import CameraCheck from './CameraCheck';
 import Splash from './Splash';
 import CheckSuccess from './CheckSuccess';
 import Welcome from './Welcome';
-
+import HistoryList from './HistoryList';
+import CheckIn from './CheckIn';
+import CheckOut from './Checkout';
 export {
   Register,
   Login,
@@ -18,4 +20,7 @@ export {
   Splash,
   CheckSuccess,
   Welcome,
+  HistoryList,
+  CheckIn,
+  CheckOut,
 };

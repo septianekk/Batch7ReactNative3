@@ -3,16 +3,16 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList,
   Image,
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 import {Checkin, Checkout, Ijin, History, Logout} from '../../assets';
 const Dashboard = ({navigation}) => {
   const [checkinDisabled, setCheckinDisabled] = useState(false);
   const [checkoutDisabled, setCheckoutDisabled] = useState(true);
-
+  // const [nama, setNama] = useState(ID);
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
@@ -36,7 +36,17 @@ const Dashboard = ({navigation}) => {
   };
 
   const checkoutButton = () => {
+    firestore()
+      .collection('CheckIn')
+      .add({
+        checkout: currentDate,
+      })
+      .then(() => {
+        Alert.alert('Berhasil Checkout');
+        console.log('Data added!');
+      });
     Alert.alert('Check out Berhasil. Pada Tanggal/Jam' + currentDate);
+
     setCheckinDisabled(false);
     setCheckoutDisabled(true);
   };

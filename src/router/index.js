@@ -10,6 +10,9 @@ import {
   CameraCheck,
   CheckSuccess,
   Welcome,
+  HistoryList,
+  CheckIn,
+  CheckOut,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -55,6 +58,21 @@ const Router = () => {
       <Stack.Screen
         name="Welcome"
         component={Welcome}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HistoryList"
+        component={HistoryList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CheckIn"
+        component={CheckIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CheckOut"
+        component={CheckOut}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

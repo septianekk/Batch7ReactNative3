@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  PermissionsAndroid,
 } from 'react-native';
 import {Success} from '../../assets';
 import Geolocation from '@react-native-community/geolocation';
